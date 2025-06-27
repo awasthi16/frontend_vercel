@@ -2,28 +2,58 @@ import { useState } from "react";
 
 const quizData = [
   {
-    question: "What does '===' mean in JavaScript?",
-    options: ['Equals', 'Strict equals', 'Assigns', 'None of the above'],
-    answer: 'Strict equals',
+    question: "What is the difference between '==' and '===' in JavaScript?",
+    options: ['Both are same', "'==' checks value, '===' checks value and type", "'===' checks only value", "'==' checks value and type"],
+    answer: "'==' checks value, '===' checks value and type",
+  },
+  {
+    question: 'What is the purpose of the `let` keyword in JavaScript?',
+    options: ['Block-scoped variable', 'Function-scoped variable', 'Global variable', 'None'],
+    answer: 'Block-scoped variable',
   },
   {
     question: 'Which company developed JavaScript?',
-    options: ['Microsoft', 'Apple', 'Netscape', 'Google'],
+    options: ['Microsoft', 'Netscape', 'Google', 'Apple'],
     answer: 'Netscape',
   },
   {
-    question: 'How can you declare a variable in ES6?',
-    options: ['var', 'let', 'const', 'All of the above'],
-    answer: 'All of the above',
+    question: 'What is a closure in JavaScript?',
+    options: ['A block', 'Function inside function with access to outer variables', 'Loop', 'A data structure'],
+    answer: 'Function inside function with access to outer variables',
   },
   {
     question: 'What is the output of typeof null?',
-    options: ['null', 'undefined', 'object', 'number'],
+    options: ['null', 'object', 'undefined', 'number'],
     answer: 'object',
   },
   {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
+    question: 'Which keyword is used to create a constant in JavaScript?',
+    options: ['const', 'let', 'var', 'static'],
+    answer: 'const',
+  },
+  {
+    question: 'Which method converts JSON data to a JavaScript object?',
+    options: ['JSON.parse()', 'JSON.stringify()', 'JSON.convert()', 'JSON.objectify()'],
+    answer: 'JSON.parse()',
+  },
+  {
+    question: 'What is the output of: console.log([] + [])?',
+    options: ['0', 'undefined', '[]', '"" (empty string)'],
+    answer: '"" (empty string)',
+  },
+  {
+    question: 'Which symbol is used for comments in JavaScript?',
+    options: ['#', '//', '<!-- -->', '%%'],
+    answer: '//',
+  },
+  {
+    question: 'What will `typeof NaN` return?',
+    options: ['number', 'NaN', 'undefined', 'object'],
+    answer: 'number',
+  },
+  {
+    question: 'Which method adds elements to the end of an array?',
+    options: ['push()', 'pop()', 'shift()', 'unshift()'],
     answer: 'push()',
   },
   {
@@ -32,476 +62,48 @@ const quizData = [
     answer: 'pop()',
   },
   {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
+    question: 'How can you convert a string to an integer in JavaScript?',
+    options: ['parseInt()', 'Number()', 'Both', 'None'],
+    answer: 'Both',
   },
   {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
+    question: 'What is a promise in JavaScript?',
+    options: ['Loop', 'Data structure', 'Asynchronous operation handler', 'Error handler'],
+    answer: 'Asynchronous operation handler',
   },
   {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
+    question: 'Which JavaScript method returns the first element that passes a test?',
+    options: ['filter()', 'map()', 'find()', 'forEach()'],
+    answer: 'find()',
   },
   {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
+    question: 'What is hoisting in JavaScript?',
+    options: ['Lifting weights', 'Variable/function declarations moved to top', 'A CSS technique', 'None of the above'],
+    answer: 'Variable/function declarations moved to top',
   },
   {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
+    question: 'What does isNaN("text") return?',
+    options: ['true', 'false', 'NaN', '0'],
+    answer: 'true',
   },
   {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
+    question: 'What is the default value of an uninitialized variable?',
+    options: ['null', '0', 'undefined', 'false'],
+    answer: 'undefined',
   },
   {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
+    question: 'How do you write a function in JavaScript?',
+    options: ['def func()', 'function myFunc()', 'func ->', 'create func()'],
+    answer: 'function myFunc()',
   },
   {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
+    question: 'What will be the output of console.log(2 + "2")?',
+    options: ['4', '22', 'NaN', 'undefined'],
+    answer: '22',
   },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
-  {
-    question: 'What does arr.slice(1, 3) return?',
-    options: ['Mutates arr to keep elements 1 and 2', 'A new array with elements at indices 1 and 2', 'Elements 1, 2, and 3', 'undefined'],
-    answer: 'A new array with elements at indices 1 and 2',
-  },
-  {
-    question: 'What does arr.splice(1, 2) do?',
-    options: ['Returns a new array with first two elements', 'Deletes elements but returns nothing', 'Removes two items starting at index 1 and returns them', 'Modifies arr.length only'],
-    answer: 'Removes two items starting at index 1 and returns them',
-  },
-  {
-    question: 'Which method adds one or more elements to the end of an array?',
-    options: ['unshift()', 'push()', 'pop()', 'shift()'],
-    answer: 'push()',
-  },
-  {
-    question: 'Which method removes the last element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'pop()',
-  },
-  {
-    question: 'How do you remove the first element of an array?',
-    options: ['pop()', 'push()', 'shift()', 'unshift()'],
-    answer: 'shift()',
-  },
-  {
-    question: 'Which method adds one or more elements to the front of an array?',
-    options: ['push()', 'unshift()', 'splice()', 'concat()'],
-    answer: 'unshift()',
-  },
-  {
-    question: "How do you find the index of a value 'x' in array arr?",
-    options: ["arr.find('x')", "arr.indexOf('x')", "arr.search('x')", "arr.loc('x')"],
-    answer: "arr.indexOf('x')",
-  },
+  // Remaining 80 questions to follow...
 ];
+
 
 // export default function Quiz() {
 //   const [current, setCurrent] = useState(0);
