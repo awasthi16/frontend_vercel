@@ -503,6 +503,62 @@ const quizData = [
   },
 ];
 
+// export default function Quiz() {
+//   const [current, setCurrent] = useState(0);
+//   const [score, setScore] = useState(0);
+//   const [showResult, setShowResult] = useState(false);
+
+//   const handleAnswer = (option) => {
+//     if (option === quizData[current].answer) {
+//       setScore(score + 1);
+//     }
+
+//     const next = current + 1;
+//     if (next < quizData.length) {
+//       setCurrent(next);
+//     } else {
+//       setShowResult(true);
+//     }
+//   };
+
+//   const restartQuiz = () => {
+//     setCurrent(0);
+//     setScore(0);
+//     setShowResult(false);
+//   };
+
+//   return (
+//     <div style={{ maxWidth: 600, margin: "0 auto", padding: 20 }}>
+//       <h1>JavaScript Quiz</h1>
+
+//       {showResult ? (
+//         <div>
+//           <h2>Your Score: {score} / {quizData.length}</h2>
+//           <button onClick={restartQuiz}>Restart Quiz</button>
+//         </div>
+//       ) : (
+//         <div>
+//           <h2>{quizData[current].question}</h2>
+//           {quizData[current].options.map((opt, index) => (
+//             <button
+//               key={index}
+//               onClick={() => handleAnswer(opt)}
+//               style={{ display: "block", margin: "10px 0" }}
+//             >
+//               {opt}
+//             </button>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+
+// import { useState } from "react";
+
+// const quizData = [/*...Paste your full 100-question quiz here...*/];
+
 export default function Quiz() {
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
@@ -512,7 +568,6 @@ export default function Quiz() {
     if (option === quizData[current].answer) {
       setScore(score + 1);
     }
-
     const next = current + 1;
     if (next < quizData.length) {
       setCurrent(next);
@@ -527,23 +582,99 @@ export default function Quiz() {
     setShowResult(false);
   };
 
+  const styles = {
+    container: {
+      maxWidth: "600px",
+      margin: "40px auto",
+      padding: "30px",
+      borderRadius: "20px",
+      backgroundColor: "#f9fbfd",
+      boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+      fontFamily: "'Segoe UI', sans-serif",
+      textAlign: "center",
+    },
+    question: {
+      fontSize: "20px",
+      marginBottom: "20px",
+      fontWeight: "bold",
+      color: "#2c3e50",
+    },
+    button: {
+      display: "block",
+      width: "100%",
+      margin: "10px 0",
+      padding: "12px 20px",
+      fontSize: "16px",
+      border: "none",
+      borderRadius: "8px",
+      backgroundColor: "#3498db",
+      color: "white",
+      cursor: "pointer",
+      transition: "all 0.3s ease",
+    },
+    buttonHover: {
+      backgroundColor: "#2980b9",
+    },
+    result: {
+      fontSize: "24px",
+      fontWeight: "bold",
+      color: "#27ae60",
+    },
+    restartBtn: {
+      marginTop: "20px",
+      padding: "12px 24px",
+      backgroundColor: "#e67e22",
+      color: "white",
+      border: "none",
+      borderRadius: "8px",
+      fontSize: "16px",
+      cursor: "pointer",
+      transition: "background-color 0.3s ease",
+    },
+    scoreStatus: {
+      marginBottom: "20px",
+      fontSize: "16px",
+      color: "#7f8c8d",
+    },
+  };
+
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto", padding: 20 }}>
-      <h1>JavaScript Quiz</h1>
+    <div style={styles.container}>
+      <h1 style={{ color: "#34495e" }}>🚀 JavaScript Quiz</h1>
 
       {showResult ? (
         <div>
-          <h2>Your Score: {score} / {quizData.length}</h2>
-          <button onClick={restartQuiz}>Restart Quiz</button>
+          <div style={styles.result}>
+            🎉 Your Score: {score} / {quizData.length}
+          </div>
+          <button
+            onClick={restartQuiz}
+            style={styles.restartBtn}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#d35400")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#e67e22")}
+          >
+            🔄 Restart Quiz
+          </button>
         </div>
       ) : (
         <div>
-          <h2>{quizData[current].question}</h2>
+          <div style={styles.scoreStatus}>
+            Question {current + 1} of {quizData.length} | Score: {score}
+          </div>
+          <h2 style={styles.question}>
+            {quizData[current].question}
+          </h2>
           {quizData[current].options.map((opt, index) => (
             <button
               key={index}
               onClick={() => handleAnswer(opt)}
-              style={{ display: "block", margin: "10px 0" }}
+              style={styles.button}
+              onMouseOver={(e) =>
+                (e.target.style.backgroundColor = styles.buttonHover.backgroundColor)
+              }
+              onMouseOut={(e) =>
+                (e.target.style.backgroundColor = styles.button.backgroundColor)
+              }
             >
               {opt}
             </button>
@@ -553,4 +684,3 @@ export default function Quiz() {
     </div>
   );
 }
-
