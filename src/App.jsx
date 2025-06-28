@@ -30,25 +30,34 @@
 // }
 
 // export default App
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Nav.css';
 
-const Nav = () => {
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import Nav from './components/Nav';
+// import Signup from './components/Signup';
+import Quiz from './components/Quiz';
+import Python from './components/Python';
+import Home from './components/Home';
+// import Signin from './components/Signin';
+// import About from './components/About';
+
+function App() {
   return (
-    <nav className="nav-container">
-      <div className="nav-logo">🚀 Superhuman</div>
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/quiz">Quiz</Link></li>
-        <li><Link to="/signin">SignIn</Link></li>
-        <li><Link to="/signup">Signup</Link></li>
-        <li><Link to="/python">Python</Link></li>
-      </ul>
-    </nav>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        {/* <Route path='/about' element={<About />} /> */}
+        <Route path='/python' element={<Python />} />
+        <Route path='/quiz' element={<Quiz />} />
+        {/* <Route path='/signin' element={<Signin />} /> */}
+        {/* <Route path='/signup' element={<Signup />} /> */}
+        <Route path='*' element={<h1>404 - Page Not Found</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
-export default Nav;
+export default App;

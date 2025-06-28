@@ -1,3 +1,11 @@
+/* ==================== COMMON ==================== */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==================== HOME ==================== */
 .home-container {
   font-family: 'Segoe UI', sans-serif;
   color: white;
@@ -16,7 +24,7 @@
 .hero-text {
   flex: 1;
   max-width: 600px;
-  animation: fadeIn 1s ease-in-out;
+  animation: homeFadeIn 1s ease-in-out both;
 }
 
 .hero-text h1 {
@@ -30,7 +38,7 @@
 .hero-text p {
   font-size: 1.2rem;
   line-height: 1.5;
-  animation: slideIn 1.5s ease-in-out;
+  animation: homeSlideIn 1.5s ease-in-out both;
 }
 
 .glow-button {
@@ -88,7 +96,7 @@
   border-radius: 15px;
   width: 280px;
   transition: transform 0.3s ease;
-  animation: bounce 1s;
+  animation: cardBounce 1s ease-in-out both;
 }
 
 .card:hover {
@@ -105,36 +113,117 @@
   color: #dcdcdc;
 }
 
-@keyframes fadeIn {
+/* Animations - HOME */
+@keyframes homeFadeIn {
   from { opacity: 0; transform: translateY(-30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideIn {
+@keyframes homeSlideIn {
   from { opacity: 0; transform: translateX(-30px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes bounce {
+@keyframes cardBounce {
   0% { transform: translateY(15px); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0); }
 }
 
 .bounce-delay {
+  animation: cardBounce 1s ease-in-out both;
   animation-delay: 0.3s;
 }
 
 .bounce-late {
+  animation: cardBounce 1s ease-in-out both;
   animation-delay: 0.6s;
 }
 
+/* ==================== NAVBAR ==================== */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #1f1c2c, #928dab);
+  padding: 15px 30px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  animation: navFadeIn 1s ease-in-out;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background-color: #00f0ff;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00f0ff;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* Animation - NAV */
+@keyframes navFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
     text-align: center;
   }
+
   .hero-img img {
     margin-top: 30px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    background: #1f1c2c;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    display: none;
+  }
+
+  .nav-container.active .nav-links {
+    display: flex;
   }
 }
