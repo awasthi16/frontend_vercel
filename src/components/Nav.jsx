@@ -4,7 +4,7 @@ import { Link} from 'react-router-dom'
 const Nav = () => {
   return (
     <div className='nav'>
-    <h1>Deep Data India Research Centre</h1>
+    <h1>Mayank Mandole The Coder</h1>
     <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
@@ -12,6 +12,7 @@ const Nav = () => {
         <li><Link to="/quiz">Quiz</Link></li>
         <li><Link to="/signin">SignIn</Link></li>
         <li><Link to="/signup">Signup</Link></li>
+         <li><Link to="/python">python</Link></li>
 
     </ul>
     </div>
