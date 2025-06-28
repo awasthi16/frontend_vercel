@@ -7,6 +7,7 @@ import Nav from './components/Nav'
 import Signup from './components/Signup'
 import Quiz from './components/Quiz';
 import Python from './components/Python';
+import Home from './components/Home';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Nav/>
       <Routes>
-        <Route path='/' element={<h1>this is home page</h1>}/>
+        <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<h1>this is about page</h1>}/>
         <Route path='/python' element={<Python/>}/>
         <Route path='/quiz' element={<Quiz/>}/>
