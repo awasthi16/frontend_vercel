@@ -1,0 +1,140 @@
+.home-container {
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: linear-gradient(to right, #1a1a2e, #16213e);
+  padding: 20px;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 20px;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 600px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #00c9ff, #92fe9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  animation: slideIn 1.5s ease-in-out;
+}
+
+.glow-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  color: white;
+  background: #00c9ff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 15px #00c9ff80;
+}
+
+.glow-button:hover {
+  background: #92fe9d;
+  box-shadow: 0 0 25px #92fe9d;
+  transform: scale(1.05);
+}
+
+.hero-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-img img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+}
+
+.features {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #00f0ff;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background-color: #0f3460;
+  padding: 25px;
+  border-radius: 15px;
+  width: 280px;
+  transition: transform 0.3s ease;
+  animation: bounce 1s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #f9f871;
+}
+
+.card p {
+  color: #dcdcdc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(15px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+.bounce-delay {
+  animation-delay: 0.3s;
+}
+
+.bounce-late {
+  animation-delay: 0.6s;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-img img {
+    margin-top: 30px;
+  }
+}
