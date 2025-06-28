@@ -40,6 +40,7 @@ import Nav from './components/Nav';
 import Quiz from './components/Quiz';
 import Python from './components/Python';
 import Home from './components/Home';
+import Mysql from './Mysql';
 // import Signin from './components/Signin';
 // import About from './components/About';
 
@@ -51,6 +52,7 @@ function App() {
         <Route path='/' element={<Home />} />
         {/* <Route path='/about' element={<About />} /> */}
         <Route path='/python' element={<Python />} />
+         <Route path='/sql' element={<Mysql/>} />
         <Route path='/quiz' element={<Quiz />} />
         {/* <Route path='/signin' element={<Signin />} /> */}
         {/* <Route path='/signup' element={<Signup />} /> */}

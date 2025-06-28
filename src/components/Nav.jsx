@@ -10,7 +10,7 @@ const Nav = () => {
 
   return (
     <nav className={`nav-container ${menuOpen ? 'active' : ''}`}>
-      <div className="nav-logo">We are Coders</div>
+      <div className="nav-logo">Awasthi sir</div>
       <div className="hamburger" onClick={toggleMenu}>
         <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
         <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
@@ -19,6 +19,7 @@ const Nav = () => {
       <ul className={`nav-links ${menuOpen ? 'show' : ''}`}>
         <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
         <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
+          <li><Link to="/sql" onClick={toggleMenu}>Mysql</Link></li>
         {/* <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li> */}
         <li><Link to="/quiz" onClick={toggleMenu}>Quiz</Link></li>
         {/* <li><Link to="/signin" onClick={toggleMenu}>SignIn</Link></li>
