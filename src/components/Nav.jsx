@@ -25,6 +25,7 @@ const Nav = () => {
         {/* <li><Link to="/signin" onClick={toggleMenu}>SignIn</Link></li>
         <li><Link to="/signup" onClick={toggleMenu}>Signup</Link></li> */}
         <li><Link to="/python" onClick={toggleMenu}>Python</Link></li>
+         <li><Link to="/electronics" onClick={toggleMenu}>Electronics</Link></li>
       </ul>
     </nav>
   );
